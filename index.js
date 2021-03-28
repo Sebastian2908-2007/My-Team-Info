@@ -18,9 +18,19 @@ const initManager = () => {
      name: 'employId',
      message: 'What is the managers employee ID?'   
     },
+    {
+        type: "text",
+        name: 'eMail',
+        message: 'what is your email adress?'
+    },
+    {
+        type: 'text',
+        name: 'officeNum',
+        message: 'what is your office number?'
+    }
       ])
       .then(({name,employId,eMail,officeNum}) => {
-      manager = new Manager(name, employId)
+      manager = new Manager(name, employId,eMail,officeNum)
       console.log(manager);
       });
 }
