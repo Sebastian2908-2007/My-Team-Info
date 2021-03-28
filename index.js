@@ -34,4 +34,83 @@ const initManager = () => {
       console.log(manager);
       });
 }
-  initManager();
+
+const initTeam = function () {
+  return  inquirer.prompt({ 
+type: 'list',
+name: 'empType',
+message: 'would you like to add an Engineer or Intern?',
+choices: ['engineer','intern']
+    }).then(({empType}) => {
+        if (empType === 'intern') {
+           // console.log('a');
+           internPrompt();
+        } if (empType === 'engineer') {
+           // console.log('b')
+           engineerPrompt();
+        }
+    })
+}
+ //initManager();
+
+ const engineerPrompt = function () {
+  let engineer;
+  return inquirer.prompt([
+    {
+        type: "text",
+        name: 'name',
+        message: 'What is the engineers  name?'
+  },
+  {
+   type: 'text',
+   name: 'employId',
+   message: 'What is the engineers employee ID?'   
+  },
+  {
+      type: "text",
+      name: 'eMail',
+      message: 'what the engineers email adress?'
+  },
+  {
+   type: 'text',
+   name: 'gitHub',
+   message: 'what is the engineers github profile?'
+  }
+  ])
+  .then(({name, employId,eMail,gitHub}) => {
+     engineer = new Engineer(name, employId,eMail,gitHub);
+     console.log(engineer);
+  });
+ }; 
+
+ const internPrompt = function () {
+     let intern;
+    return inquirer.prompt([
+        {
+            type: "text",
+            name: 'name',
+            message: 'What is the interns  name?'
+      },
+      {
+       type: 'text',
+       name: 'employId',
+       message: 'What is the interns employee ID?'   
+      },
+      {
+          type: "text",
+          name: 'eMail',
+          message: 'what the interns email adress?'
+      },
+      {
+       type: 'text',
+       name: 'school',
+       message: 'what is the school?'
+      }
+      ])
+      .then(({name, employId,eMail,school}) => {
+         intern = new Intern(name, employId,eMail,school);
+         console.log(intern);
+      }); 
+ };
+
+ initTeam();
