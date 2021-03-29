@@ -3,6 +3,7 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const {writeFile, copyFile} = require('./utils/generate-page');
 const inquirer = require("inquirer");
+const myTeam = [];
  
 const initManager = () => {
     let manager;
@@ -31,8 +32,11 @@ const initManager = () => {
       ])
       .then(({name,employId,eMail,officeNum}) => {
       manager = new Manager(name, employId,eMail,officeNum)
-      console.log(manager);
+      myTeam.push(manager);
+      console.log(myTeam);
+      initTeam();
       });
+      
 }
 
 const initTeam = function () {
@@ -51,7 +55,7 @@ choices: ['engineer','intern']
         }
     })
 }
- //initManager();
+ 
 
  const engineerPrompt = function () {
   let engineer;
@@ -79,8 +83,11 @@ choices: ['engineer','intern']
   ])
   .then(({name, employId,eMail,gitHub}) => {
      engineer = new Engineer(name, employId,eMail,gitHub);
-     console.log(engineer);
-  });
+     myTeam.push(engineer);
+     console.log(myTeam);
+     anotherMember();
+  })
+  
  }; 
 
  const internPrompt = function () {
@@ -109,8 +116,29 @@ choices: ['engineer','intern']
       ])
       .then(({name, employId,eMail,school}) => {
          intern = new Intern(name, employId,eMail,school);
-         console.log(intern);
+         myTeam.push(intern);
+         console.log(myTeam);
+         anotherMember()
       }); 
  };
 
- initTeam();
+  const anotherMember = function () {
+    inquirer.prompt({
+        type: 'confirm',
+        name: 'another',
+        message: 'would you like to add another team member?',
+    })
+      .then(({another}) => {
+        if (another === true) {
+             return initTeam();
+        }else {
+            console.log(myTeam);
+            return false;
+            
+            
+        }
+    })
+
+  };
+ initManager();
+ 
