@@ -1,11 +1,13 @@
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const {writeFile, copyFile} = require('./utils/generate-page');
+const {writeFile} = require('./utils/generate-page');
+const generatePage = require('./src/page-template')
 const inquirer = require("inquirer");
+const fs = require('fs');
 const myTeam = [];
  
-const initManager = () => {
+ const initManager = () => {
     let manager;
    return inquirer
       .prompt([ 
@@ -32,14 +34,24 @@ const initManager = () => {
       ])
       .then(({name,employId,eMail,officeNum}) => {
       manager = new Manager(name, employId,eMail,officeNum)
-      myTeam.push(manager);
-      console.log(myTeam);
-      initTeam();
-      });
+     // myTeam.push(manager);
+      //console.log(myTeam);
+     // initTeam();
+      })
+      .then(data => {
+        return  generatePage(data);
+      })
+      .then(page => {
+         return writeFile(page);
+      })
+      .then(writeFileResponse => {
+      console.log(writeFileResponse);
+      })
+      
       
 }
 
-const initTeam = function () {
+/*const initTeam = function () {
   return  inquirer.prompt({ 
 type: 'list',
 name: 'empType',
@@ -139,6 +151,7 @@ choices: ['engineer','intern']
         }
     })
 
-  };
+  };*/
  initManager();
+ 
  
