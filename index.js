@@ -34,24 +34,14 @@ const myTeam = [];
       ])
       .then(({name,employId,eMail,officeNum}) => {
       manager = new Manager(name, employId,eMail,officeNum)
-     // myTeam.push(manager);
-      //console.log(myTeam);
-     // initTeam();
+      myTeam.push(manager);
+      console.log(myTeam);
+      initTeam();
       })
-      .then(data => {
-        return  generatePage(data);
-      })
-      .then(page => {
-         return writeFile(page);
-      })
-      .then(writeFileResponse => {
-      console.log(writeFileResponse);
-      })
-      
       
 }
 
-/*const initTeam = function () {
+  const initTeam = function () {
   return  inquirer.prompt({ 
 type: 'list',
 name: 'empType',
@@ -151,7 +141,17 @@ choices: ['engineer','intern']
         }
     })
 
-  };*/
+  };
  initManager();
+ // this code block works put at end of engineer and intern
+ /*  .then(data => {
+        return  generatePage(data);
+      })
+      .then(page => {
+         return writeFile(page);
+      })
+      .then(writeFileResponse => {
+      console.log(writeFileResponse);
+      })*/
  
  
