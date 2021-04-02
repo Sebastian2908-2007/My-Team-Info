@@ -1,3 +1,4 @@
+const Engineer = require("../lib/Engineer");
 
  const managerGen = teamArr => {
     
@@ -83,11 +84,17 @@ const engineerGen = teamArr => {
 
 };
 
- module.exports =  data => {
+ module.exports = employees => {
 
-const {gitHub, officeNum, school} = data;
+const [[{manager},{engineer},{intern}]] = employees;
 
-    return `
+//const [{name,employId,eMail,gitHub}] = engineer;
+
+//const [{name,employId,eMail,school}] = intern;
+
+
+
+  return `
     
     <!DOCTYPE html>
     <html lang="en">
@@ -104,9 +111,9 @@ const {gitHub, officeNum, school} = data;
   <header>My Team</header>
     <body>
   <div>
-  ${managerGen(officeNum)}
-  ${internGen(school)}
-  ${engineerGen(gitHub)}
+  ${managerGen(manager)}
+  ${internGen(intern)}
+  ${engineerGen(engineer)}
   
   </div>
     </body>
