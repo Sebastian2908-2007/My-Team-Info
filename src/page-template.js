@@ -43,8 +43,8 @@ Email:
 `
 }; 
  
- const internGen = teamArr => {
-  return `
+ const internGen = (name,employId,eMail,school) => {
+  /*return `
   ${teamArr
  .filter(({school}) => school)
   .map(({name,employId,eMail,school}) => {
@@ -66,12 +66,27 @@ Email:
   `})
  }
   
-`;
- 
+`*/
+return `
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+  <div class="card">
+<div class="card-body">
+<h2 class="card-title">Intern</h2>
+  <h5 class="card-title">${name}</h5>
+<p class="card-text">Id:${employId}</p>
+<p class="card-text">School:${school}</p> 
+<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:
+</a>
+</div>
+</div>
+</div>
+`
 };
 
-const engineerGen = teamArr => {
-  return `
+const engineerGen = (name,employId,eMail,gitHub) => {
+ /* return `
   ${teamArr
  .filter(({gitHub}) => gitHub)
   .map(({name,employId,eMail,gitHub}) => {
@@ -95,7 +110,25 @@ const engineerGen = teamArr => {
   `})
  }
   
-`;
+`;*/
+return `
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+  <div class="card">
+<div class="card-body">
+<h2 class="card-title">Engineer</h2>
+  <h5 class="card-title">${name}</h5>
+<p class="card-text">Id:${employId}</p>
+<a class="card-text" href=" https://github.com/${gitHub}">
+GitHub:
+</a>
+<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:
+</a>
+</div>
+</div>
+</div>
+`
  
 
 };
@@ -103,6 +136,9 @@ const engineerGen = teamArr => {
  module.exports = employeesArr => {
 
 const [{name,employId,eMail,officeNum},
+       {eName,eEmployId,eEMail,gitHub},
+       {iName,iEmployId,iEMail,school},
+
 
 ] = employeesArr;
 
@@ -110,7 +146,7 @@ const [{name,employId,eMail,officeNum},
 
 //const [{name,employId,eMail,school}] = intern;
 
-
+//console.log(employeesArr)
 
   return `
     
@@ -129,8 +165,10 @@ const [{name,employId,eMail,officeNum},
   <header>My Team</header>
     <body>
   <div>
+  
+  ${internGen(iName,iEmployId,iEMail,school)}
+  ${engineerGen(eName,eEmployId,eEMail,gitHub)}
   ${managerGen(name,employId,eMail,officeNum)}
- 
   
   </div>
     </body>
@@ -143,3 +181,8 @@ const [{name,employId,eMail,officeNum},
 
 /*${internGen(name, employId,eMail,school)}
   ${engineerGen(name,employId,eMail,gitHub)}*/
+
+ /* ${managerGen(name,employId,eMail,officeNum)}
+  ${internGen(name, employId,eMail,school)}
+  ${engineerGen(name,employId,eMail,gitHub)}
+ ${managerGen(name,employId,eMail,officeNum)} */

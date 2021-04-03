@@ -36,8 +36,8 @@ const myTeam = [];
       manager = new Manager(name, employId,eMail,officeNum)
       myTeam.push(manager);
       console.log(myTeam);
-     // initTeam();
-      }).then(() => {
+      initTeam();
+      })/*.then(() => {
           return myTeam
       })
       .then(myTeam => {
@@ -51,7 +51,7 @@ const myTeam = [];
       })
       .catch(err => {
           console.log (err)
-      })
+      })*/
       
 
       
@@ -80,17 +80,17 @@ choices: ['engineer','intern']
   return inquirer.prompt([
     {
         type: "text",
-        name: 'name',
+        name: 'eName',
         message: 'What is the engineers  name?'
   },
   {
    type: 'text',
-   name: 'employId',
+   name: 'eEmployId',
    message: 'What is the engineers employee ID?'   
   },
   {
       type: "text",
-      name: 'eMail',
+      name: 'eEMail',
       message: 'what the engineers email adress?'
   },
   {
@@ -99,8 +99,8 @@ choices: ['engineer','intern']
    message: 'what is the engineers github profile?'
   }
   ])
-  .then(({name, employId,eMail,gitHub}) => {
-     engineer = new Engineer(name, employId,eMail,gitHub);
+  .then(({eName, eEmployId,eEMail,gitHub}) => {
+     engineer = new Engineer(eName, eEmployId,eEMail,gitHub);
      myTeam.push(engineer);
      console.log(myTeam);
      anotherMember();
@@ -113,17 +113,17 @@ choices: ['engineer','intern']
     return inquirer.prompt([
         {
             type: "text",
-            name: 'name',
+            name: 'iName',
             message: 'What is the interns  name?'
       },
       {
        type: 'text',
-       name: 'employId',
+       name: 'iEmployId',
        message: 'What is the interns employee ID?'   
       },
       {
           type: "text",
-          name: 'eMail',
+          name: 'iEMail',
           message: 'what the interns email adress?'
       },
       {
@@ -132,8 +132,8 @@ choices: ['engineer','intern']
        message: 'what is the school?'
       }
       ])
-      .then(({name, employId,eMail,school}) => {
-         intern = new Intern(name, employId,eMail,school);
+      .then(({iName, iEmployId,iEMail,school}) => {
+         intern = new Intern(iName, iEmployId,iEMail,school);
          myTeam.push(intern);
          console.log(myTeam);
          anotherMember()
@@ -150,14 +150,43 @@ choices: ['engineer','intern']
         if (another === true) {
              return initTeam();
         }else {
-            console.log(myTeam);
-            return false;
+
+            //console.log(myTeam);
+            return stop()
             
             
         }
     })
     
-  };
+  }
+
+ const stop = () => {
+     inquirer.prompt({
+         type:"confirm",
+         name: "confirm",
+         message:"are you sure you are done?"
+     })
+     .then(() => {
+        return myTeam
+    })
+    .then(myTeam => {
+      return  generatePage(myTeam);
+    })
+    .then(page => {
+       return writeFile(page);
+    })
+    .then(writeFileResponse => {
+    console.log(writeFileResponse);
+    })
+    .catch(err => {
+        console.log (err)
+    })
+    
+ }
+
+  
+
+
  initManager();
  // this code block works put at end of engineer and intern
  /*  .then(data => {
