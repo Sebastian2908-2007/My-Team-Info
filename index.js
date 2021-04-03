@@ -1,8 +1,7 @@
-const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-/*const {writeFile} = require('./utils/generate-page');
+const {writeFile} = require('./utils/generate-page');
 const generatePage = require('./src/page-template')
 const inquirer = require("inquirer");
 const fs = require('fs');
@@ -37,7 +36,9 @@ const myTeam = [];
       manager = new Manager(name, employId,eMail,officeNum)
       myTeam.push(manager);
       console.log(myTeam);
-      //initTeam();
+     // initTeam();
+      }).then(() => {
+          return myTeam
       })
       .then(myTeam => {
         return  generatePage(myTeam);
@@ -51,6 +52,7 @@ const myTeam = [];
       .catch(err => {
           console.log (err)
       })
+      
 
       
 }
@@ -156,7 +158,7 @@ choices: ['engineer','intern']
     })
     
   };
- initManager();*/
+ initManager();
  // this code block works put at end of engineer and intern
  /*  .then(data => {
         return  generatePage(data);
@@ -168,4 +170,5 @@ choices: ['engineer','intern']
       console.log(writeFileResponse);
       })*/
  
- new Employee();
+
+     

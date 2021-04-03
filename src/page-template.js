@@ -1,10 +1,10 @@
-const Engineer = require("../lib/Engineer");
+//const Engineer = require("../lib/Engineer");
 
- const managerGen = teamArr => {
+ const managerGen = (name, employId,officeNum,eMail) => {
     
-  return `
+  /*return `
      ${teamArr
-    .filter(({officeNum}) => officeNum)
+    //.filter(({officeNum}) => officeNum)
      .map(({name,employId,eMail,officeNum}) => {
        return `
        <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -24,7 +24,23 @@ const Engineer = require("../lib/Engineer");
      `})
     }
      
-`;
+`;*/
+return `
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+  <div class="card">
+<div class="card-body">
+<h2 class="card-title">Manager</h2>
+  <h5 class="card-title">${name}</h5>
+<p class="card-text">Id:${employId}</p>
+<p class="card-text">Office Number:${officeNum}</p> 
+<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:
+</a>
+</div>
+</div>
+</div>
+`
 }; 
  
  const internGen = teamArr => {
@@ -84,9 +100,11 @@ const engineerGen = teamArr => {
 
 };
 
- module.exports = employees => {
+ module.exports = employeesArr => {
 
-const [[{manager},{engineer},{intern}]] = employees;
+const [{name,employId,eMail,officeNum},
+
+] = employeesArr;
 
 //const [{name,employId,eMail,gitHub}] = engineer;
 
@@ -111,9 +129,8 @@ const [[{manager},{engineer},{intern}]] = employees;
   <header>My Team</header>
     <body>
   <div>
-  ${managerGen(manager)}
-  ${internGen(intern)}
-  ${engineerGen(engineer)}
+  ${managerGen(name,employId,eMail,officeNum)}
+ 
   
   </div>
     </body>
@@ -124,3 +141,5 @@ const [[{manager},{engineer},{intern}]] = employees;
 
 
 
+/*${internGen(name, employId,eMail,school)}
+  ${engineerGen(name,employId,eMail,gitHub)}*/
