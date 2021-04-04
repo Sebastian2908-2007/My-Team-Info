@@ -1,133 +1,68 @@
-//const Engineer = require("../lib/Engineer");
+
 
  const managerGen = (name, employId,officeNum,eMail) => {
-    
-  /*return `
-     ${teamArr
-    //.filter(({officeNum}) => officeNum)
-     .map(({name,employId,eMail,officeNum}) => {
-       return `
-       <div class="row row-cols-1 row-cols-md-2 g-4">
-       <div class="col">
-         <div class="card">
-       <div class="card-body">
-       <h2 class="card-title">Manager</h2>
-         <h5 class="card-title">${name}</h5>
-       <p class="card-text">Id:${employId}</p>
-       <p class="card-text">Office Number:${officeNum}</p> 
-       <a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-       Email:
-       </a>
-       </div>
-     </div>
-   </div>
-     `})
-    }
-     
-`;*/
+
 return `
-<div class="row row-cols-1 row-cols-md-2 g-4">
+
 <div class="col">
-  <div class="card">
-<div class="card-body">
-<h2 class="card-title">Manager</h2>
-  <h5 class="card-title">${name}</h5>
-<p class="card-text">Id:${employId}</p>
-<p class="card-text">Office Number:${officeNum}</p> 
-<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-Email:
+  <div class="card container">
+<div class="card-body  p-3 mb-2 bg-success text-white">
+<h2 class="card-title text-dark ">Manager</h2>
+  <h5 class="card-title text-dark">${name}</h5>
+<p class="card-text text-dark ">Id:${employId}</p>
+<p class="card-text text-dark">Office Number:${officeNum}</p> 
+<a class="card-text text-dark" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:${eMail}
 </a>
 </div>
 </div>
-</div>
+
 `
 }; 
  
  const internGen = (name,employId,eMail,school) => {
-  /*return `
-  ${teamArr
- .filter(({school}) => school)
-  .map(({name,employId,eMail,school}) => {
-    return `
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card">
-    <div class="card-body">
-    <h2 class="card-title">Intern</h2>
-      <h5 class="card-title">${name}</h5>
-    <p class="card-text">Id:${employId}</p>
-    <p class="card-text">School:${school}</p> 
-    <a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-    Email:
-    </a>
-    </div>
-  </div>
-</div>
-  `})
- }
-  
-`*/
+
 return `
-<div class="row row-cols-1 row-cols-md-2 g-4">
+
 <div class="col">
-  <div class="card">
-<div class="card-body">
-<h2 class="card-title">Intern</h2>
-  <h5 class="card-title">${name}</h5>
-<p class="card-text">Id:${employId}</p>
-<p class="card-text">School:${school}</p> 
-<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-Email:
+  <div class="card container">
+<div class="card-body  p-3 mb-2 bg-success text-white">
+<h2 class="card-title text-dark">Intern</h2>
+  <h5 class="card-title text-dark">${name}</h5>
+<p class="card-text text-dark">Id:${employId}</p>
+<p class="card-text text-dark">School:${school}</p> 
+<a class="card-text text-dark" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:${eMail}
 </a>
 </div>
 </div>
-</div>
+
 `
 };
 
 const engineerGen = (name,employId,eMail,gitHub) => {
- /* return `
-  ${teamArr
- .filter(({gitHub}) => gitHub)
-  .map(({name,employId,eMail,gitHub}) => {
-    return `
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card">
-    <div class="card-body">
-    <h2 class="card-title">Engineer</h2>
-      <h5 class="card-title">${name}</h5>
-    <p class="card-text">Id:${employId}</p>
-    <a class="card-text" href=" https://github.com/${gitHub}">
-    GitHub:
-    </a>
-    <a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-    Email:
-    </a>
-    </div>
-  </div>
-</div>
-  `})
- }
-  
-`;*/
+
 return `
-<div class="row row-cols-1 row-cols-md-2 g-4">
+
 <div class="col">
-  <div class="card">
-<div class="card-body">
-<h2 class="card-title">Engineer</h2>
-  <h5 class="card-title">${name}</h5>
-<p class="card-text">Id:${employId}</p>
-<a class="card-text" href=" https://github.com/${gitHub}">
-GitHub:
+  <div class="card container">
+<div class="card-body p-3 mb-2 bg-success text-white">
+<h2 class="card-title text-dark ">Engineer</h2>
+  <h5 class="card-title text-dark">${name}</h5>
+<p class="card-text text-dark">Id:${employId}</p>
+<p>
+<a class="card-text text-dark" href=" https://github.com/${gitHub}">
+GitHub:${gitHub}
 </a>
-<a class="card-text" href="mailto:piotr@mailtrap.io, ${eMail}">
-Email:
+</p>
+<p>
+<a class="card-text text-dark" href="mailto:piotr@mailtrap.io, ${eMail}">
+Email:${eMail}
 </a>
+</p>
 </div>
 </div>
-</div>
+
 `
  
 
@@ -142,9 +77,7 @@ const [{name,employId,eMail,officeNum},
 
 ] = employeesArr;
 
-//const [{name,employId,eMail,gitHub}] = engineer;
 
-//const [{name,employId,eMail,school}] = intern;
 
 //console.log(employeesArr)
 
@@ -162,13 +95,15 @@ const [{name,employId,eMail,officeNum},
       <link rel="stylesheet" href="style.css">
     </head>
   <main>
-  <header>My Team</header>
+  <div class="jumbotron p-3 mb-2 bg-primary text-white">
+  <header class='h1 text-center text-dark'>My Team</header>
+  </div>
     <body>
-  <div>
-  
-  ${internGen(iName,iEmployId,iEMail,school)}
-  ${engineerGen(eName,eEmployId,eEMail,gitHub)}
+  <div class = "row ">
   ${managerGen(name,employId,eMail,officeNum)}
+  ${engineerGen(eName,eEmployId,eEMail,gitHub)}
+  ${internGen(iName,iEmployId,iEMail,school)}
+  
   
   </div>
     </body>
@@ -179,10 +114,3 @@ const [{name,employId,eMail,officeNum},
 
 
 
-/*${internGen(name, employId,eMail,school)}
-  ${engineerGen(name,employId,eMail,gitHub)}*/
-
- /* ${managerGen(name,employId,eMail,officeNum)}
-  ${internGen(name, employId,eMail,school)}
-  ${engineerGen(name,employId,eMail,gitHub)}
- ${managerGen(name,employId,eMail,officeNum)} */
